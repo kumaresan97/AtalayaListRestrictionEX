@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://stconsultingcomau.sharepoint.com/sites/iTimeSheet/Lists/RestrictedLists/AllItems.aspx",
+      "pageUrl": "https://technorucs365.sharepoint.com/sites/Atalaya/Lists/RestrictedLists/AllItems.aspx",
       "customActions": {
         "a3d54e0f-47fd-4cf7-9f5e-c4b85ecefd3c": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -15,7 +15,7 @@
       }
     },
     "listRestrictionCustom": {
-      "pageUrl": "https://stconsultingcomau.sharepoint.com/sites/iTimeSheet/Lists/RestrictedLists/AllItems.aspx",
+      "pageUrl": "https://technorucs365.sharepoint.com/sites/Atalaya/Lists/RestrictedLists/AllItems.aspx",
       "customActions": {
         "a3d54e0f-47fd-4cf7-9f5e-c4b85ecefd3c": {
           "location": "ClientSideExtension.ApplicationCustomizer",
