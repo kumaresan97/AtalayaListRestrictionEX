@@ -40,9 +40,14 @@ export default class ListRestrictionCustomApplicationCustomizer extends BaseAppl
     });
   }
   async getListItems() {
+    let _masArray = [];
+    let _atalayaAdmin = [];
+    let _atalayaVisitors = [];
     let IsCurrentUserAdmin = false;
+
     var homepageURL = this.context.pageContext.web.absoluteUrl;
     var currentUserName = this.context.pageContext.user.email;
+
     console.log("currentUserName >> ", currentUserName);
 
     await pnp.sp.web.siteGroups
@@ -50,9 +55,29 @@ export default class ListRestrictionCustomApplicationCustomizer extends BaseAppl
       .users.get()
       .then((allItems: any[]) => {
         console.log("allItems >> ", allItems);
-        IsCurrentUserAdmin = allItems.some(
+        _atalayaAdmin = [...allItems];
+        // IsCurrentUserAdmin = allItems.some(
+        //   (e: any) => e.Email.toLowerCase() === currentUserName.toLowerCase()
+        // );
+      })
+      .catch((err: any) => {
+        console.log("Err >> ", err);
+      });
+
+    await pnp.sp.web.siteGroups
+      .getByName("Atalaya Visitors")
+      .users.get()
+      .then((allVisitors: any[]) => {
+        console.log("allVisitors >> ", allVisitors);
+        _atalayaVisitors = [...allVisitors];
+        _masArray = _atalayaAdmin.concat(_atalayaVisitors);
+
+        console.log("_masArray >> ", _masArray);
+
+        IsCurrentUserAdmin = _masArray.some(
           (e: any) => e.Email.toLowerCase() === currentUserName.toLowerCase()
         );
+
         console.log("IsCurrentUserAdmin >> ", IsCurrentUserAdmin);
       })
       .catch((err: any) => {
